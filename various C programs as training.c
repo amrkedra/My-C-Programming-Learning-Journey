@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <conio.h>
+#include <string.h>
+#include <ctype.h>
 #define n 5
 
 void stu_mark();
@@ -8,24 +11,41 @@ char names();
 void even_odd_arr(void);
 void ascending(void);
 void insert(void);
+int string_len();
+void str_reverse();
 
-int main() //this function is to check if any of the array elements are the same value and then prints the number of matches found
+int main()
 {
-armestrong();
-    //rev_int();
+
+remove_blank_space();
+
+//char_freq();
+//matrix_mltiply();
+//sum_of_array_elements();
+//string_upper_lower();
+//str_reverse();
+//concatenation_string();
+//angram();
+//occu_string();
+//remove_char_from_string();
+//largest();
+//sum_without_plus();
+//swap();
+//binary();
+//prime();
+//armestrong();
+//rev_int();
 //odd_occurance();
-
 //majority();
-
 //determinant();
-   // sparse_matrix();
+// sparse_matrix();
 //lower_triangle();
 //second_largst();
 //del_from_arr();
-
 //fibonacci();
 //insert();
 //ascending();
+}
     //even_odd_arr();
     /*int arr[5],j, i,max, min;
     for(i=0;i<5;i++){
@@ -48,9 +68,74 @@ else{min=min;}
 
  printf("the max is %d \n and the min is %d ", max , min);
 */
+
+void remove_blank_space(void){//this function is to remove the space from string
+
+char string[100] , c=' ';
+int i,j,size;
+
+printf("enter the string:");
+gets(string);
+
+size= strlen(string);
+
+for(i=0,j=0;i<size;i++){
+
+        if(string[i]!=c){
+            string[j]=string[i];
+            j++;
+
+        }
+    }
+
+
+
+string[j] = '\0';
+
+puts(string);
+
 }
-//this function is to receive elements in array and seperate even from odd and print each seperatly.
-void even_odd_arr(void){
+
+
+
+
+
+
+void char_freq(void){//this function is to find the char with largest frequency
+
+char string[100],c;
+
+int i ,j,size,count[1000]={0},x=0;
+
+printf("enter the string:");
+gets(string);
+
+size= strlen(string);
+
+
+for(i=0;i<size;i++){
+
+
+    count[string[i]]++;
+
+}
+
+for(i=0;i<size;i++){
+    if(count[string[i]] >= x){
+        x=count[string[i]];
+
+        c=string[i];
+    }
+}
+printf("the char is %c is repeated %d times", c,x);
+
+}
+
+
+
+
+void even_odd_arr(void){ //this function is to receive elements in array and seperate even from odd and print each seperatly.
+
 int arr[n],even[n],odd[n],i,j=0,k=0;
 
 for(i=0;i<n;i++){
@@ -444,6 +529,494 @@ else{
     printf("this is not Armestrong num");
 }
 }
+
+
+void prime(void){//this function is to check for prime number
+int num,temp,i,prime;
+
+printf("enter the number :");
+scanf("%d", &num);
+
+temp = ceil(sqrt(num));
+
+for(i=2; i<=temp;i++){
+    if (num%i == 0){
+       prime =0;
+    }
+    else{
+        prime = 1;
+    }
+
+}
+if(prime || num==2||num==3){
+    printf("this number is prime");
+}
+else{
+    printf("this is not prime");
+}
+
+
+}
+
+
+void binary(void){//this function is to determine given number is entered in binary form or not
+
+int num, temp, rem,count=0;
+
+printf("enter the number:");
+scanf("%d", &num);
+
+temp = num;
+while(temp!=0){
+    rem = temp%10;
+     temp=temp/10;
+    if(rem==0 || rem==1){
+     count++;
+
+
+    }
+    else{
+        count=0;
+    }
+
+    }
+
+    if(count){
+        printf("this number is binary");
+    }
+    else{
+        printf("this number is not binary");
+    }
+
+}
+
+
+void swap(void){ //this function is to swap 2 numbers without using third variable
+
+int num1,num2;
+
+
+printf("enter the first num:");
+scanf("%d",&num1);
+
+printf("enter second num:");
+scanf("%d", &num2);
+
+num1 = num1 - num2;
+num2 = num1 + num2;
+num1= num2 -num1;
+
+
+printf("num1 = %d\n", num1);
+printf("num2 = %d", num2);
+}
+
+void sum_without_plus(void){//this function is to add 2 numbers without using + sign
+int x , y,i;
+
+printf("enter first n:");
+scanf("%d", &x);
+
+printf("enter second n:");
+scanf("%d", &y);
+
+for (i=0;i<y;i++){
+    x++;
+}
+
+printf("the sum is :%d ", x);
+
+
+}
+
+void largest(void){//this function to find the largest of 3 numbers
+
+int x,y,z,i,largest;
+
+
+    printf("enter first number:");
+    scanf("%d", &x);
+
+     printf("\nenter second number:");
+    scanf("%d", &y);
+
+     printf("\nenter third number:");
+    scanf("%d", &z);
+
+
+
+    if(x>y && x>z)
+        largest=x;
+    else if (z>y && z>x)
+        largest=z;
+    else if(y>x && y>z)
+        largest = y;
+    printf("\n%d", largest);
+}
+
+void remove_char_from_string(void){//this function is to remove a specific char from string
+char string[50],c;
+int i ,j,count;
+
+printf("enter the string:");
+gets(string);
+
+puts("enter the string you want to remove");
+scanf("%c", &c);
+
+
+count = strlen(string);
+
+for(i=0,j=0; i<count; i++){
+
+    if (string[i] != c){
+
+        string[j++] = string[i];
+
+    }
+
+}
+string[j] = '\0';
+puts(string);
+
+
+
+}
+
+void occu_string(void){ //this function is to count number of times char is repeated
+char string[50], c;
+int i ,x,count=0,size;
+
+printf("enter the string:");
+gets(string);
+
+puts("enter the string you want to check");
+scanf("%c", &c);
+
+size = strlen(string);
+
+for (i=0; i<size;i++){
+
+    if (string[i] == c){
+        count++;
+        x=i;
+    }
+
+}
+printf("the string %c is repeated %d times", string[x], count);
+
+}
+
+
+
+
+void angram(void){//this function is to detect if 2 strings are angram or not
+char string1[20], string2[20],temp;
+int i,j,size1,size2,count=0;
+
+printf("enter string 1:");
+gets(string1);
+
+printf("\nenter string 2:");
+gets(string2);
+
+size1= strlen(string1);
+size2= strlen(string2);
+
+
+if(size1!= size2){
+    printf("NOT ANGRAM STRING");
+    exit(0);
+}
+else{
+for(i=0;i<size1;i++){
+        for(j=i+1;j<size1;j++){
+    if(string1[i] > string1[j]){
+
+       temp = string1[i];
+       string1[i]=string1[j];
+       string1[j]=temp;
+    }
+        }
+    }
+for(i=0;i<size2;i++){
+        for(j=i+1;j<size2;j++){
+
+    if(string2[i]>string2[j]){
+         temp = string2[i];
+       string2[i]=string2[j];
+       string2[j]=temp;
+    }
+
+}
+}
+
+if(strcmp(string1, string2)==0){
+    printf("ANGRAM");
+}
+else{
+    printf("NOT ANGRAM");
+}
+
+
+
+}
+}
+
+
+int string_len(char *string){ //this function is to get string length and return the string length as int
+int i=0;
+
+while(string[i] != '\0'){
+i++;
+}
+
+return i;
+}
+
+
+void concatenation_string(void){//this function is to concatenate 2 strings
+
+char string1[20],string2[20];
+int i ,j,size1,size2,order;
+
+printf("Enter first string:");
+gets(string1);
+
+printf("Enter second string:");
+gets(string2);
+
+
+printf("which string first :");
+scanf("%d", &order);
+
+size1= strlen(string1);
+size2 = strlen(string2);
+
+if(order == 1){
+
+for(i=size1,j=0;j<size2;j++,i++){
+       string1[i] = string2[j];
+
+        }
+    puts(string1);
+
+}
+
+else{
+
+ for(i=size2,j=0;j<size1;j++,i++){
+       string2[i] = string1[j];
+
+        }
+    puts(string2);
+
+}
+
+}
+
+
+int string_comparison(char* string1,char* string2){//this function is to check wether 2 strings are same or not
+
+int i,j;
+char temp;
+
+if(strlen(string1) != strlen(string2)){
+    return 1;
+}
+else{
+for(i=0; i<strlen(string1);i++){
+    for(i+1;j<=strlen(string1);j++){
+        if(string1[i] > string1[j]){
+            temp = string1[i];
+            string1[i] = string1[j];
+            string1[j]=temp;
+        }
+    }
+}
+
+  for(i=0; i<strlen(string2);i++){
+    for(i+1;j<=strlen(string2);j++){
+        if(string1[i] > string1[j]){
+                  temp = string2[i];
+            string2[i] = string2[j];
+            string2[j] = temp;
+        }
+    }
+}
+}
+
+for(i=0; i<strlen(string1);i++){
+    if(string1[i] == string2[i]){
+        return 0;
+    }
+    else{
+        return 1;
+    }
+
+
+}
+
+}
+
+
+void str_reverse(void){//this function is to reverse a string
+
+int size, half_size,i,j;
+char temp,string[50];
+
+printf("enter the string:");
+gets(string);
+
+half_size = ceil(strlen(string)/2);
+size=strlen(string);
+
+for(i=0,j=size-1;i<half_size;i++,j--){
+    temp = string[i];
+    string[i]=string[j];
+    string[j]=temp;
+}
+
+puts(string);
+
+
+
+}
+
+void string_upper_lower(void){//this function is to convert from UPPER to lower
+
+int i,j;
+char string[50];
+
+printf("enter the string:");
+gets(string);
+
+
+for(i=0;i<strlen(string);i++){
+
+    if(string[i] <= 90 && string[i]>=65){
+        string[i] = string[i]+32;
+    }
+}
+
+puts(string);
+
+}
+
+
+void sum_of_array_elements(void){
+int array[5][5] , i,j,sum_row[5]={0},sum_column[5]={0};
+
+for(i=0;i<5;i++){
+    for(j=0;j<5;j++){
+
+        printf("enter element no %d of row %d", j,i);
+        scanf("%d",&array[i][j]);
+    }
+}
+for(i=0;i<5;i++){
+    for(j=0;j<5;j++){
+
+        printf("%d ", array[i][j]);
+
+    }
+
+    printf("\n");
+}
+
+
+
+for(i=0;i<5;i++){
+        for(j=0;j<5;j++){
+    sum_row[i] = sum_row[i] + array[i][j];
+
+        }
+}
+for(i=0;i<5;i++){
+        printf("%d ",sum_row[i]);
+
+}
+
+
+printf("\n");
+
+for(i=0;i<5;i++){
+        for(j=0;j<5;j++){
+    sum_column[i] = sum_column[i] + array[j][i];
+
+        }
+}
+for(i=0;i<5;i++){
+        printf("%d ",sum_column[i]);
+
+}
+
+}
+
+
+void matrix_mltiply(void){
+
+int arr1[3][3], arr2[3][3], j,i,rows1,columns1,rows2,columns2,mul[3][3];
+
+printf("enter the # of rows and # of columns of first matrix");
+scanf("%d %d", &rows1,&columns1);
+
+printf("\n enter the # of rows and # of columns of second matrix ");
+scanf("%d %d", &rows2,&columns2);
+
+if(columns1 != rows2){
+    printf("can't be multiplied as rows of 1 matrix not equal to columns of 2 array");
+    exit (0);
+    }
+else{
+    for(i=0;i<rows1;i++){
+        for(j=0;j<columns1;j++){
+            printf(" for matrix 1, enter element #%d of row #%d",j,i);
+            scanf("%d", &arr1[i][j]);
+        }
+    }
+
+     for(i=0;i<rows2;i++){
+        for(j=0;j<columns2;j++){
+            printf(" for matrix 2, enter element #%d of row #%d",j,i);
+            scanf("%d", &arr2[i][j]);
+        }
+    }
+for(i=0;i<rows1;i++){
+    for(j=0;j<columns1;j++){
+        printf("%d ",arr1[i][j]);
+    }
+    printf("\n");
+}
+
+
+for(i=0;i<rows2;i++){
+    for(j=0;j<columns2;j++){
+        printf("%d ",arr2[i][j]);
+    }
+    printf("\n");
+}
+
+
+for(i=0;i<rows1;i++){
+    for(j=0;j<columns2;j++){
+        mul[i][j]= ((arr1[i][j]*arr2[i][j])+(arr1[i][j+1]+arr2[i][j+1])+(arr1[i][j+2]*arr2[i][j+2]));
+
+    }
+}
+
+for(i=0;i<rows1;i++){
+    for(j=0;j<columns2;j++){
+        printf("%d ",mul[i][j]);
+    }
+    printf("\n");
+}
+
+}
+}
+
+
+
     /*for(i=0; i<5; i++){
 
         for(j=i+1;j<5;j++){
@@ -574,18 +1147,7 @@ q=*p;
 printf("%d",*p+1);*/
 
 
-    /*int x=3,y=6,z=14,i,largest;
-
-        if(x>y)
-        largest=x;
-    else
-        largest=y;
-    if(largest>z)
-        largest = largest;
-    else
-        largest = z;
-    printf("%d", largest);
-}
+    /*
 
 /* int arr[20]={8,6,9,7,5,3,2}, i, size,pos,num;
  printf("enter size");
